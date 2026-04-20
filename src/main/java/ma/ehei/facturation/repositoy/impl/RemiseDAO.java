@@ -1,4 +1,4 @@
-package ma.ehei.facturation;
+package ma.ehei.facturation.repositoy.impl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

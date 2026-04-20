@@ -16,7 +16,7 @@ public class Transaction {
     private Long id;
     private Double montantAvant;
     private Double montantApres;
+    @Builder.Default
     private LocalDateTime date = LocalDateTime.now();
     private Long remiseId;
-    private Remise remise;
 }
