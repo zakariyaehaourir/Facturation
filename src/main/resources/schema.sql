@@ -5,9 +5,9 @@ CREATE TABLE remise (
                         taux DECIMAL(5,2)
 );
 
-INSERT INTO remise (montant_min, montant_max, taux) VALUES (0, 1000, 0.00);
-INSERT INTO remise (montant_min, montant_max, taux) VALUES (1000, 5000, 0.05);
-INSERT INTO remise (montant_min, montant_max, taux) VALUES (5000, 10000, 0.10);
+INSERT INTO remise (montant_min, montant_max, taux) VALUES (0, 999.99, 0.00);
+INSERT INTO remise (montant_min, montant_max, taux) VALUES (1000, 4999.99, 0.05);
+INSERT INTO remise (montant_min, montant_max, taux) VALUES (5000, 9999.99, 0.10);
 INSERT INTO remise (montant_min, montant_max, taux) VALUES (10000, NULL, 0.15);
 
 

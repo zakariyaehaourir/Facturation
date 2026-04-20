@@ -3,7 +3,7 @@ package ma.ehei.facturation.service.impl;
 import lombok.AllArgsConstructor;
 import ma.ehei.facturation.exception.RemiseException;
 import ma.ehei.facturation.model.Transaction;
-import ma.ehei.facturation.repositoy.TransactionRepository;
+import ma.ehei.facturation.repositoy.impl.TransactionRepositoryImpl;
 import ma.ehei.facturation.service.TransactionService;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
-    private TransactionRepository transactionRepository;
+    private TransactionRepositoryImpl transactionRepository;
 
     @Override
     public int saveTransaction(Transaction t) {
         if(t.getMontantAvant() <= 0)
             throw new RemiseException("Montant à remiser doit étre positif");
+        System.out.println(t.toString());
         return this.transactionRepository.save(t);
     }
 

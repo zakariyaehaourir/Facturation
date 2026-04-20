@@ -3,9 +3,7 @@ package ma.ehei.facturation.strategy;
 import lombok.AllArgsConstructor;
 import ma.ehei.facturation.model.Transaction;
 import ma.ehei.facturation.repositoy.RemiseRepository;
-import ma.ehei.facturation.repositoy.TransactionRepository;
 import ma.ehei.facturation.service.TransactionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,14 +16,16 @@ public class DefaultRemiseStrategy implements Remise{
     @Override
     public Double calculateRemise(Double mt) {
         var remise=this.remiseRepository.findByBetweenMinAndMax(mt);
-        this.transactionService.saveTransaction(
+        int saveResult=this.transactionService.saveTransaction(
                 new Transaction().builder().
                         remiseId(remise.getId())
                                 .montantAvant(mt)
-                                        .montantApres(mt * remise.getTaux())
-                                                .
-                        build();
+                                        .montantApres(mt - (mt * remise.getTaux()))
+
+                        .build()
         );
+        if(saveResult > 0)
+            System.out.println("Transaction saved ... ");
         return mt * remise.getTaux();
     }
 
