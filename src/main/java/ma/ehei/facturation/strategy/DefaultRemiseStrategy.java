@@ -14,9 +14,9 @@ public class DefaultRemiseStrategy implements Remise{
     private final TransactionService transactionService;
 
     @Override
-    public Double calculateRemise(Double mt) {
+    public Transaction calculateRemise(Double mt) {
         var remise=this.remiseRepository.findByBetweenMinAndMax(mt);
-        int saveResult=this.transactionService.saveTransaction(
+        return this.transactionService.saveTransaction(
                 new Transaction().builder().
                         remiseId(remise.getId())
                                 .montantAvant(mt)
@@ -24,9 +24,7 @@ public class DefaultRemiseStrategy implements Remise{
 
                         .build()
         );
-        if(saveResult > 0)
-            System.out.println("Transaction saved ... ");
-        return mt * remise.getTaux();
+
     }
 
     @Override

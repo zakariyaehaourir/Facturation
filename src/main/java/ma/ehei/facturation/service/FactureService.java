@@ -1,8 +1,9 @@
 package ma.ehei.facturation.service;
 
 import ma.ehei.facturation.guesser.FactureStrategyGuesser;
+import ma.ehei.facturation.model.Transaction;
 
 public interface FactureService {
-    public Double calculeMontant(Double mt , String identifiantStrategy) throws RuntimeException;
+    public Transaction calculeMontant(Double mt , String identifiantStrategy) throws RuntimeException;
 
 }
