@@ -2,6 +2,7 @@ package ma.ehei.facturation.service.impl;
 
 import lombok.AllArgsConstructor;
 import ma.ehei.facturation.guesser.FactureStrategyGuesser;
+import ma.ehei.facturation.model.Transaction;
 import ma.ehei.facturation.service.FactureService;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class FactureServiceHandler implements FactureService {
         this.strategyGuesser = guesser;
     }
 
-    public Double calculeMontant(Double mt , String identifiantStrategy) throws RuntimeException {
+    public Transaction calculeMontant(Double mt , String identifiantStrategy) throws RuntimeException {
         return this.strategyGuesser.guessStrategy(identifiantStrategy)
                 .calculateRemise(mt);
     }

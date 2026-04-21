@@ -1,5 +1,6 @@
 package ma.ehei.facturation.runner;
 
+import ma.ehei.facturation.model.Transaction;
 import ma.ehei.facturation.repositoy.impl.RemiseDAO;
 import ma.ehei.facturation.service.FactureService;
 import org.springframework.boot.CommandLineRunner;
@@ -31,8 +32,8 @@ public class FactureTestRunner implements CommandLineRunner {
 
         String identifiant = (choix == 1) ? "remise_fix" :(choix == 2) ?   "remise_variable" : "h2-database";
 
-        Double result =this.factureServiceHandler.calculeMontant(mt,identifiant);
-        System.out.println("Le résultat est : " + result);
+        Transaction result =this.factureServiceHandler.calculeMontant(mt,identifiant);
+        System.out.println("Le résultat est : " + result.getMontantApres());
 
         dao.countRemises();
     }
