@@ -19,4 +19,6 @@ public class Transaction {
     @Builder.Default
     private LocalDateTime date = LocalDateTime.now();
     private Long remiseId;
+
+    private Utilisateur user;
 }

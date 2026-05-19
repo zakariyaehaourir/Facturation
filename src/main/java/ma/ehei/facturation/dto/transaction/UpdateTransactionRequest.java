@@ -1,4 +1,4 @@
-package ma.ehei.facturation.dto.Transaction;
+package ma.ehei.facturation.dto.transaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Data
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTransactionResponse {
+public class UpdateTransactionRequest {
     private Long id;
     private Double montantAvant;
     private Double montantApres;
     private LocalDateTime date;
+    private Long remiseId;
 }

@@ -1,4 +1,4 @@
-package ma.ehei.facturation.dto.Transaction;
+package ma.ehei.facturation.dto.transaction;
 
 import lombok.Builder;
 import lombok.Data;

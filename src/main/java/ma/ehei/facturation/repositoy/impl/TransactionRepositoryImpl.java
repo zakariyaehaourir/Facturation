@@ -18,7 +18,7 @@ import java.util.Optional;
 public class TransactionRepositoryImpl implements TransactionRepository {
     private final JdbcTemplate jdbcTemplate;
     public Transaction save(Transaction t) {
-        String sql = "INSERT INTO Transactions (date, montant_avant, montant_apres, remise_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Transactions (date, montant_avant, montant_apres, remise_id,utilisateur_id) VALUES (?, ?, ?, ?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -28,6 +28,7 @@ public class TransactionRepositoryImpl implements TransactionRepository {
             ps.setObject(2, t.getMontantAvant());
             ps.setObject(3, t.getMontantApres());
             ps.setObject(4, t.getRemiseId());
+            ps.setObject(5,t.getUser().getId());
             return ps;
         }, keyHolder);
 

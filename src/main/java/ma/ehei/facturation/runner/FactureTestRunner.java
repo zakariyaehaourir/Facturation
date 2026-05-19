@@ -32,7 +32,7 @@ public class FactureTestRunner implements CommandLineRunner {
 
         String identifiant = (choix == 1) ? "remise_fix" :(choix == 2) ?   "remise_variable" : "h2-database";
 
-        Transaction result =this.factureServiceHandler.calculeMontant(mt,identifiant);
+        Transaction result =this.factureServiceHandler.calculeMontant(mt,identifiant , null);
         System.out.println("Le résultat est : " + result.getMontantApres());
 
         dao.countRemises();

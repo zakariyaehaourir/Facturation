@@ -5,6 +5,14 @@ CREATE TABLE remise (
                         taux DECIMAL(5,2)
 );
 
+CREATE TABLE Utilisateurs(
+                             id BIGINT PRIMARY KEY AUTO_INCREMENT,
+                             nom text NOT NULL,
+                             prenom text NOT NULL
+
+
+);
+
 INSERT INTO remise (montant_min, montant_max, taux) VALUES (0, 999.99, 0.00);
 INSERT INTO remise (montant_min, montant_max, taux) VALUES (1000, 4999.99, 0.05);
 INSERT INTO remise (montant_min, montant_max, taux) VALUES (5000, 9999.99, 0.10);
@@ -29,7 +37,10 @@ CREATE TABLE Transactions (
 
 
 
-                             remise_id      BIGINT    REFERENCES Remise(id)
+                             remise_id      BIGINT    REFERENCES Remise(id),
+
+                            utilisateur_id BIGINT REFERENCES Utilisateurs(id)
 
 
 );
+

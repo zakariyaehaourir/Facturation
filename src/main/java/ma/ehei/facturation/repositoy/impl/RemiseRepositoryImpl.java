@@ -1,11 +1,12 @@
 package ma.ehei.facturation.repositoy.impl;
 
 import ma.ehei.facturation.model.Remise;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
+@Primary
 public class RemiseRepositoryImpl implements ma.ehei.facturation.repositoy.RemiseRepository {
     private JdbcTemplate jdbcTemplate;
 
@@ -25,5 +26,20 @@ public class RemiseRepositoryImpl implements ma.ehei.facturation.repositoy.Remis
                     .build();
             return r;
         });
+    }
+
+    @Override
+    public Remise save(Remise remise) {
+        return null;
+    }
+
+    @Override
+    public Remise update(Remise remise) {
+        return null;
+    }
+
+    @Override
+    public void delete(Remise remise) {
+
     }
 }

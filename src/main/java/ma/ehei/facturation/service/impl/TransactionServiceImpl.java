@@ -25,15 +25,21 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public int updateTransaction(Transaction t) {
+    public void updateTransaction(Transaction t , Long id) throws RemiseException,TransactionNotFoundException{
         if(t.getMontantAvant() <= 0)
             throw new RemiseException("Montant à remiser doit étre positif");
-        return this.transactionRepository.update(t);
+        int rowsAffected = this.transactionRepository.update(t);
+        if(rowsAffected <= 0)
+            throw new TransactionNotFoundException("Transaction n'est pas trouvé avec l'id : "+ id);
+
     }
 
     @Override
-    public int deleteTransaction(Transaction t) {
-        return this.transactionRepository.delete(t);
+    public void deleteTransaction(Transaction t) throws TransactionNotFoundException {
+        int rowsAffected =this.transactionRepository.delete(t);
+        if(rowsAffected <= 0)
+            throw new TransactionNotFoundException("Transaction n'est pas trouvé avec l'id : "+ t.getId());
+        this.transactionRepository.delete(t);
     }
 
 
