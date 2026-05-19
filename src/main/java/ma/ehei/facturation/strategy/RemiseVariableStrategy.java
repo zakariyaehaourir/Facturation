@@ -2,6 +2,7 @@ package ma.ehei.facturation.strategy;
 
 import lombok.Getter;
 
+import ma.ehei.facturation.dto.transaction.UserInTransactionDto;
 import ma.ehei.facturation.model.Transaction;
 import org.springframework.stereotype.Component;
 @Getter
@@ -12,7 +13,7 @@ public class RemiseVariableStrategy implements Remise{
     private final String identifiant = "remise_variable";
 
     @Override
-    public Transaction calculateRemise(Double mt) {
+    public Transaction calculateRemise(Double mt, UserInTransactionDto userDto) {
         double taux = (mt > 1000) ? 0.20 : 0.05;
         double montantApres = mt - (mt * taux);
 

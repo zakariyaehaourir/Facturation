@@ -1,7 +1,8 @@
 package ma.ehei.facturation.mapper;
 
-import ma.ehei.facturation.dto.Transaction.CreateTransactionResponse;
-import ma.ehei.facturation.dto.Transaction.OneTransactionResponse;
+import ma.ehei.facturation.dto.transaction.CreateTransactionResponse;
+import ma.ehei.facturation.dto.transaction.OneTransactionResponse;
+import ma.ehei.facturation.dto.transaction.UpdateTransactionRequest;
 import ma.ehei.facturation.model.Transaction;
 
 public class TransactionMapper {
@@ -20,6 +21,23 @@ public class TransactionMapper {
                 .date(t.getDate())
                 .montantApres(t.getMontantApres())
                 .montantAvant(t.getMontantAvant())
+                .build();
+    }
+
+    public static Transaction toModel(UpdateTransactionRequest dto){
+        return new Transaction().
+                builder().
+                id(dto.getId())
+                        .montantApres(dto.getMontantApres())
+                                .montantAvant(dto.getMontantAvant())
+                                        .date(dto.getDate()).
+                build();
+    }
+
+    public static Transaction minimalisteModel(Long id){
+        return new Transaction()
+                .builder()
+                .id(id)
                 .build();
     }
 }
